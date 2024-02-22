@@ -18,7 +18,7 @@ function MainLayout() {
   const handleOpenUpdate = () => setOpenUpdate(true);
   const dispatch = useDispatch();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const navigate = useNavigate();
 
   return (

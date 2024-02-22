@@ -44,8 +44,8 @@ export default function PokemonModalUpdate({ open, setOpen }) {
 
   const onSubmit = (data) => {
     const { name, url, type1, type2 } = data;
-    // console.log(data);
-    // console.log(id);
+    console.log(data);
+    console.log(id);
     dispatch(
       editPokemon({ name, id, imgUrl: url, types: [type1, type2] })
     ).then(() => {

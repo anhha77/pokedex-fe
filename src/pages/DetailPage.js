@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { PokeType } from "../components/PokeType";
 import { getPokemonById } from "../features/pokemons/pokemonSlice";
@@ -25,12 +25,13 @@ const styles = {
 
 export const DetailPage = () => {
   const { pokemon, nextPokemon, previousPokemon } = useSelector(
-    (state) => state.pokemons.pokemon
+    (state) => state.pokemons.pokemon,
+    shallowEqual
   );
   const { id } = useParams();
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPokemonById(id));
+    dispatch(getPokemonById({ id }));
   }, [id, dispatch]);
 
   const weaknesses = calculateWeaknesses(pokemon?.types);
