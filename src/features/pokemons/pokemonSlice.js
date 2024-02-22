@@ -54,10 +54,11 @@ export const addPokemon = createAsyncThunk(
 
 export const editPokemon = createAsyncThunk(
   "pokemons/editPokemon",
-  async ({ name, id, url, types }, { rejectWithValue }) => {
+  async ({ name, id, url, types }, { rejectWithValue, dispatch }) => {
     try {
       let url = `/pokemons/${id}`;
       await apiService.put(url, { name, url, types });
+      dispatch(getPokemonById(id));
       return;
     } catch (error) {
       return rejectWithValue(error);

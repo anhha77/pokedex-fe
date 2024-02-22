@@ -48,8 +48,10 @@ export default function PokemonModalUpdate({ open, setOpen }) {
     // console.log(id);
     dispatch(
       editPokemon({ name, id, imgUrl: url, types: [type1, type2] })
-    ).then(reset());
-    navigate(`/`);
+    ).then(() => {
+      reset();
+      navigate(`/pokemons/${id}`);
+    });
   };
 
   const handleClose = () => setOpen(false);
